@@ -1,0 +1,16 @@
+number of hyperedges is 1072
+length of train is 140
+Hidden layers: [1433, 262144, 131072, 65536, 32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 7]
+Traceback (most recent call last):
+  File "/data/xwt/HyperGCN/hypergcn.py", line 30, in <module>
+    HyperGCN = model.initialise(dataset, args)
+  File "/data/xwt/HyperGCN/model/model.py", line 105, in initialise
+    hypergcn = networks.HyperGCN(V, E, X, args)
+  File "/data/xwt/HyperGCN/model/networks.py", line 36, in __init__
+    self.layers = nn.ModuleList([utils.HyperGraphConvolution(h[i], h[i+1], reapproximate, cuda) for i in range(l)])
+  File "/data/xwt/HyperGCN/model/networks.py", line 36, in <listcomp>
+    self.layers = nn.ModuleList([utils.HyperGraphConvolution(h[i], h[i+1], reapproximate, cuda) for i in range(l)])
+  File "/data/xwt/HyperGCN/model/utils.py", line 20, in __init__
+    self.W = Parameter(torch.FloatTensor(a, b))
+RuntimeError: [enforce fail at CPUAllocator.cpp:64] . DefaultCPUAllocator: can't allocate memory: you tried to allocate 137438953472 bytes. Error code 12 (Cannot allocate memory)
+
