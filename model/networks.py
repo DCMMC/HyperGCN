@@ -20,13 +20,16 @@ class HyperGCN(nn.Module):
         h = [d]
         for i in range(l-1):
             power = l - i + 2
-            if args.dataset == 'citeseer': power = l - i + 4
+            if args.dataset == 'citeseer':
+                power = l - i + 4
             h.append(2**power)
         h.append(c)
+        print(f'Hidden layers: {h}')
 
         if args.fast:
             reapproximate = False
-            structure = utils.Laplacian(V, E, X, args.mediators)        
+            structure = utils.Laplacian(V, E, X, args.mediators)
+            print('use FastHyperGCN.')
         else:
             reapproximate = True
             structure = E
